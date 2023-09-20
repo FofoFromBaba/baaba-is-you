@@ -23,7 +23,8 @@ end
 function objectswithproperty(property, p)
  local objs1 = {}
  for i,ob in ipairs(rules) do
-    if matches(ob[3], property, true) and (ob[2] == "is")then
+    if ob[2] == "iss" or ob[2] == "am" then ob[2] = "is" end
+    if matches(ob[3], property, true) and (ob[2] == "is") then
       for j,job in ipairs(Objects) do
 
        if matches(ob[1], job) then
@@ -168,7 +169,8 @@ function hasrule(name1,verb1,prop1)
   local finals = {}
   for useless,getrule in ipairs(rules) do
    if matches(getrule[1], name1, true)then
-    if(getrule[2] == verb1)then
+    if getrule[2] == "iss" or getrule[2] == "am" then getrule[2] = "is" end
+    if(getrule[2] == verb1) then
      if matches(getrule[3], prop1, true)then
         return true
      end
@@ -280,7 +282,7 @@ function Parser:makeFirstWords()
           table.insert(self.words, {ob.id, "down"})
         end
 
-        if type == 0 then
+        if type == 0 or type == 42 then
 
           local lft = gettiles("left",ob.tilex,ob.tiley,1)
           local ups = gettiles("up",ob.tilex,ob.tiley,1)
@@ -301,7 +303,7 @@ function Parser:makeFirstWords()
             end
           end
           for i, j in ipairs(lft2) do
-            if hasand and j.type == 0 then
+            if hasand and (j.type == 0 or j.type == 42) then
               blft = true
             end
           end
@@ -313,7 +315,7 @@ function Parser:makeFirstWords()
             end
           end
           for i, j in ipairs(ups2) do
-            if hasand and j.type == 0 then
+            if hasand and (j.type == 0 or j.type == 42) then
               bup = true
             end
           end
@@ -367,7 +369,12 @@ function Parser:MakeRules()
     end
 
 end
-
+function gettextequality(type)
+	if type == 42 then
+		return 0
+	end
+	return type
+end
 function Parser:ParseRules()
 
   for i, j in ipairs(self.wordsToParse) do
@@ -456,7 +463,7 @@ function Parser:ParseRules()
     elseif letterpass > 0 then
       letterpass = letterpass - 1
     elseif(stage == -1) then
-        if type == 0 then
+        if (type == 0 or type == 42)  then
           table.insert(ids, thing)
           table.insert(rule_targets, name)
           stage = 1
@@ -469,7 +476,7 @@ function Parser:ParseRules()
         end
       -- X
       elseif (stage == 0) then
-        if type == 0 then
+        if (type == 0 or type == 42) then
           table.insert(ids, thing)
           table.insert(rule_targets, name)
           stage = 1
@@ -478,20 +485,20 @@ function Parser:ParseRules()
         end
       -- IS X / X AND Y IS Z / x ON Y IS Z
       elseif (stage == 1) then
-        if type == 1 then
+        if (type == 1 or type == 42) then
 
           if next == nil then
-
             stop = true
-
-          else
+	  else
 
             local accepted_args = getspritevalues("text_" .. name).args or {0}
+	    if accepted_args[1] == 0 then
+		table.insert(accepted_args, 42)
+	    end
             local success = false
             local asletter = false
             local lettername = ""
             for i, z in ipairs(accepted_args) do
-
               if (next.type == z) then
                 success = true
                 break
@@ -506,6 +513,22 @@ function Parser:ParseRules()
               end
 
             end
+
+	    if name == "am" then
+	   	 for i,target in pairs(rule_targets) do
+			if target ~= "i2" then
+				success = false
+				break
+			end
+	    	end
+	    elseif name == "is" then
+	   	 for i,target in pairs(rule_targets) do
+			if target == "i2" then
+				success = false
+				break
+			end
+	    	end
+	    end
 
             if success then
               table.insert(ids, thing)
@@ -593,8 +616,7 @@ function Parser:ParseRules()
           if type == 4 then
 
 
-
-              if next.type == 1 then
+              if (next.type == 1 or next.type == 42) then
 
                 fixTHIS = thing
                 stage = 1
@@ -606,9 +628,7 @@ function Parser:ParseRules()
                 local success = false
                 local asletter = false
                 local lettername = ""
-
                 for i, z in ipairs(accepted_args) do
-
                   if (next.type == z) then
                     success = true
                     break
@@ -621,7 +641,6 @@ function Parser:ParseRules()
                       break
                     end
                   end
-
                 end
 
                 if success then

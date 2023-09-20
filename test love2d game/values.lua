@@ -212,6 +212,12 @@ objectValues = {
     rotate = 6
   },
   {
+    name = "text_festive",
+    sprite = "text_festive",
+    color = {5,1},
+    type = 3
+  },
+  {
     name = "text_key",
     sprite = "text_key",
     color = {3,1},
@@ -509,6 +515,17 @@ objectValues = {
     name = "scribble",
     sprite = "scribble",
     color = {1,2}
+  },
+  {
+    name = "text_squiggle",
+    sprite = "text_squiggle",
+    color = {4,2},
+    type = 0
+  },
+  {
+    name = "squiggle",
+    sprite = "squiggle",
+    color = {4,2}
   },
   {
     name = "text_hex",
@@ -1190,6 +1207,13 @@ objectValues = {
     args = {0, 2}
   },
   {
+    name = "text_draw",
+    sprite = "text_draw",
+    color = {3,1},
+    type = 1,
+    args = {1, 3, 4, 5, 6, 7}
+  },
+  {
     name = "text_pants",
     sprite = "text_pants",
     color = {6,3},
@@ -1469,6 +1493,12 @@ objectValues = {
     type = 7
   },
   {
+    name = "text_nextto",
+    sprite = "text_nextto",
+    color = {1,2},
+    type = 7
+  },
+  {
     name = "text_above",
     sprite = "text_above",
     color = {6,5},
@@ -1633,6 +1663,67 @@ objectValues = {
     name = "cursor",
     sprite = "cursor",
     color = {6,4}
+  },
+  {
+    name = "tyyty",
+    sprite = "tyyty",
+    color = {4,4},
+    rotate = 6
+  },
+  {
+    name = "text_tyyty",
+    sprite = "text_tyyty",
+    color = {4,4},
+    type = 0
+  },
+  {
+    name = "iss",
+    sprite = "iss",
+    color = {5,3},
+    rotate = 4
+  },
+  {
+    name = "text_iss",
+    sprite = "text_iss",
+    color = {5,3},
+    type = 42,
+    args = {0, 2}
+  },
+  {
+    name = "spikes",
+    sprite = "spikes",
+    color = {7,5}
+  },
+  {
+    name = "text_spikes",
+    sprite = "text_spikes",
+    color = {7,5},
+    type = 0
+  },
+  {
+    name = "text_elinfc",
+    sprite = "text_elinfc",
+    color = {4,4},
+    type = 2
+  },
+  {
+    name = "i2",
+    sprite = "i2",
+    color = {7,1},
+    rotate = 4
+  },
+  {
+    name = "text_i2",
+    sprite = "text_i2",
+    color = {7,1},
+    type = 0
+  },
+  {
+    name = "text_am",
+    sprite = "text_am",
+    color = {1,2},
+    type = 1,
+    args = {0, 2}
   },
 }
 local bonusletters = {"c","d","e","f","g","h","j","k","l","m","n","p","r","t","v","w","x","z"}

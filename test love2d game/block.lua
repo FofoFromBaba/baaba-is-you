@@ -202,11 +202,29 @@ end
  end
 
  local iswrite = objectswithverb("write")
+ local isdraw = objectswithverb("draw")
 
  for i, write in ipairs(iswrite) do
 
    local c = write.unit
    local totransform = "text_" .. write.target
+   if c.transformable then
+
+     if getspritevalues(totransform).nope == nil then
+       makeobject(c.tilex,c.tiley,totransform,c.dir)
+
+
+       handledels({c})
+     end
+
+   end
+
+ end
+
+ for i, draw in ipairs(isdraw) do
+
+   local c = draw.unit
+   local totransform = "text_" .. draw.target
    if c.transformable then
 
      if getspritevalues(totransform).nope == nil then
