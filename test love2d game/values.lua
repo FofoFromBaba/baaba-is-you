@@ -212,12 +212,6 @@ objectValues = {
     rotate = 6
   },
   {
-    name = "text_festive",
-    sprite = "text_festive",
-    color = {5,1},
-    type = 3
-  },
-  {
     name = "text_key",
     sprite = "text_key",
     color = {3,1},
@@ -517,17 +511,6 @@ objectValues = {
     color = {1,2}
   },
   {
-    name = "text_squiggle",
-    sprite = "text_squiggle",
-    color = {4,2},
-    type = 0
-  },
-  {
-    name = "squiggle",
-    sprite = "squiggle",
-    color = {4,2}
-  },
-  {
     name = "text_hex",
     sprite = "text_hex",
     color = {2,3},
@@ -670,6 +653,7 @@ objectValues = {
     name = "pillar",
     sprite = "pillar",
     color = {1,3},
+    rotate = 5
   },
   {
     name = "text_love",
@@ -1207,13 +1191,6 @@ objectValues = {
     args = {0, 2}
   },
   {
-    name = "text_draw",
-    sprite = "text_draw",
-    color = {3,1},
-    type = 1,
-    args = {1, 3, 4, 5, 6, 7}
-  },
-  {
     name = "text_pants",
     sprite = "text_pants",
     color = {6,3},
@@ -1493,12 +1470,6 @@ objectValues = {
     type = 7
   },
   {
-    name = "text_nextto",
-    sprite = "text_nextto",
-    color = {1,2},
-    type = 7
-  },
-  {
     name = "text_above",
     sprite = "text_above",
     color = {6,5},
@@ -1664,11 +1635,62 @@ objectValues = {
     sprite = "cursor",
     color = {6,4}
   },
+
+  -- modded things start here
+
   {
-    name = "tyyty",
-    sprite = "tyyty",
-    color = {4,4},
+    name = "finite",
+    sprite = "finite",
+    color = {2,2},
     rotate = 6
+  },
+  {
+    name = "text_finite",
+    sprite = "text_finite",
+    color = {2,2},
+    type = 0
+  },
+  {
+    name = "text_draw",
+    sprite = "text_draw",
+    color = {3,1},
+    type = 1,
+    args = {1, 3, 4, 5, 6, 7}
+  },
+  {
+    name = "text_squiggle",
+    sprite = "text_squiggle",
+    color = {4,2},
+    type = 0
+  },
+  {
+    name = "squiggle",
+    sprite = "squiggle",
+    color = {4,2}
+  },
+  {
+    name = "finite",
+    sprite = "finite",
+    color = {2,2},
+    rotate = 6
+  },
+  {
+    name = "text_finite",
+    sprite = "text_finite",
+    color = {2,2},
+    type = 0
+  },
+  {
+    name = "text_nextto",
+    sprite = "text_nextto",
+    color = {1,2},
+    type = 7
+  },
+  {
+    name = "text_knir",
+    sprite = "text_knir",
+    color = {1,1},
+    type = 7
   },
   {
     name = "text_tyyty",
@@ -1690,23 +1712,6 @@ objectValues = {
     args = {0, 2}
   },
   {
-    name = "spikes",
-    sprite = "spikes",
-    color = {7,5}
-  },
-  {
-    name = "text_spikes",
-    sprite = "text_spikes",
-    color = {7,5},
-    type = 0
-  },
-  {
-    name = "text_elinfc",
-    sprite = "text_elinfc",
-    color = {4,4},
-    type = 2
-  },
-  {
     name = "i2",
     sprite = "i2",
     color = {7,1},
@@ -1725,13 +1730,64 @@ objectValues = {
     type = 1,
     args = {0, 2}
   },
+  {
+    name = "spikes",
+    sprite = "spikes",
+    color = {7,5}
+  },
+  {
+    name = "tyyty",
+    sprite = "tyyty",
+    color = {4,4},
+    rotate = 6
+  },
+  {
+    name = "text_spikes",
+    sprite = "text_spikes",
+    color = {7,5},
+    type = 0
+  },
+  {
+    name = "text_elinfc",
+    sprite = "text_elinfc",
+    color = {4,4},
+    type = 2
+  },
+  {
+    name = "text_direction",
+    sprite = "text_direction",
+    color = {6,5},
+    type = 2
+  },
+  {
+    name = "addaad",
+    sprite = "addaad",
+    color = {7,2},
+    rotate = 4
+  },
+  {
+    name = "text_addaad",
+    sprite = "text_addaad",
+    color = {7,2},
+    type = 0
+  },
 }
-local bonusletters = {"c","d","e","f","g","h","j","k","l","m","n","p","r","t","v","w","x","z"}
+
+local bonusletters = {"c","d","e","f","g","h","j","k","l","m","n","p","r","t","v","w","x","z","fin"}
 for i, j in ipairs(bonusletters) do
   table.insert(objectValues, {
     name = "text_" .. j,
     sprite = "text_" .. j,
     color = {1,2},
     type = 5
+  })
+end
+local dlist = {"up","right","left","down","direction"}
+for i,dir in ipairs(dlist) do
+  table.insert(objectValues, {
+    name = "text_fall" .. dir,
+    sprite = "text_fall" .. dir,
+    color = {2,3},
+    type = 2
   })
 end

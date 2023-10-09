@@ -142,6 +142,37 @@ condf["near"] = function(id, args, p)
   return done == #args
 end
 
+condf["knir"] = function(id, args, p)
+  local obj = Objects[id]
+
+  local done = 0
+
+  local results = {}
+
+  for i, j in ipairs(Objects) do
+    if id ~= j.id then
+
+      local xdiff = math.abs(j.tilex - obj.tilex)
+      local ydiff = math.abs(j.tiley - obj.tiley)
+      if (xdiff + ydiff == 3) and (xdiff > 0) and (ydiff > 0) then
+        table.insert(results, j)
+      end
+    end
+  end
+
+  for i, j in ipairs(args) do
+    for n, m in ipairs(results) do
+      if m.id ~= id then
+        if matches(j, m) then
+          done = done + 1
+          break
+        end
+      end
+    end
+  end
+  return done == #args
+end
+
 condf["nextto"] = function(id, args, p)
   local obj = Objects[id]
 

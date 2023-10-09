@@ -130,17 +130,17 @@ function update(unitid,x,y)
 end
 
 function fullmove(unit, dir)
-
-  if(dir == "right")then
+  fdir = dir
+  if(fdir == "right")then
     unit.x = unit.x+tilesize
     unit.tilex = unit.tilex + 1
-  elseif(dir == "left")then
+  elseif(fdir == "left")then
     unit.x = unit.x-tilesize
     unit.tilex = unit.tilex - 1
-  elseif(dir == "down")then
+  elseif(fdir == "down")then
     unit.y = unit.y+tilesize
     unit.tiley = unit.tiley + 1
-  elseif(dir == "up")then
+  elseif(fdir == "up")then
     unit.y = unit.y-tilesize
     unit.tiley = unit.tiley - 1
   end
@@ -159,11 +159,16 @@ function moveunit(unitid,dir)
 end
 
 function dir_to_xy(dir)
-  if(dir == "right")then return {1,0}
-elseif(dir == "left")then return {-1,0}
-elseif(dir == "down")then return {0,1}
-elseif(dir == "up")then return {0,-1}
-else return {0,0} end
+  local dlist = {"up","down","left","right"}
+  fdir = dir
+  if(fdir == "direction")then
+	fdir = dlist[math.random(1,4)]
+  end
+  if(fdir == "right")then return {1,0}
+  elseif(fdir == "left")then return {-1,0}
+  elseif(fdir == "down")then return {0,1}
+  elseif(fdir == "up")then return {0,-1}
+  else return {0,0} end
 end
 
 function smallcheck(ida,idb)

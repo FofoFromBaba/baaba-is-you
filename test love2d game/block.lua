@@ -32,7 +32,11 @@ local colorblocks = {
   },
 }
 local dirblocks = {
-  "up"
+  "up",
+  "right",
+  "down",
+  "left",
+  "direction"
 }
 local dir
 function findproperties()
@@ -224,8 +228,8 @@ end
    end
 
  end
-
- local isfall = objectswithproperty("fall")
+ 
+ --[[local isfall = objectswithproperty("fall")
  for i,faller in ipairs(isfall) do
    local limit = 0
    local to_x = faller.tilex
@@ -251,6 +255,38 @@ end
      limit = limit + 1
    end
 
+ end]]
+
+ for i,direction in pairs(dirblocks) do
+ local isfall = objectswithproperty("fall" .. direction)
+	local dlist = dir_to_xy(direction)
+ 	for i,faller in ipairs(isfall) do
+   	local limit = 0
+   	local to_x = faller.tilex
+   	local to_y = faller.tiley
+  	 local done = false
+ 	  while limit < 300 and not done do
+ 	    to_x = to_x + dlist[1]
+ 	    to_y = to_y + dlist[2]
+	     local here = allhere(to_x, to_y)
+  	   local fail = false
+  	   for a, b in ipairs(here) do
+   	    if ruleexists(b.id, nil, "is", "stop") or ruleexists(b.id, nil, "is", "push") then
+   	      fail = true
+    	   end
+    	 end
+     	if fail or ((to_y > levely - 1) or (to_y < 1)) or ((to_x > levelx -2) or (to_x < 1)) then
+ 	   to_x = to_x - dlist[1]
+ 	   to_y = to_y - dlist[2]
+    	   faller.x = to_x * tilesize
+    	   faller.y = to_y * tilesize
+    	   faller.tilex = to_x
+     	  faller.tiley = to_y
+    	   done = true
+     	end
+     	limit = limit + 1
+   	end
+ 	end
  end
 
  local isselect = objectswithproperty("select")
@@ -401,8 +437,13 @@ end
 
   for i,direct in ipairs(dirblocks)do
    local isdir = objectswithproperty(direct)
+   local fdir = direct
+   if(direct == "direction")then
+     local dlist = {"up","down","left","right"}
+     fdir = dlist[math.random(1,4)]
+   end
    for j,c in ipairs(isdir)do
-    c.dir = direct
+    c.dir = fdir
    end
   end
 

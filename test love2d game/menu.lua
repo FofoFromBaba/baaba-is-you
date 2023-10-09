@@ -44,7 +44,7 @@ function menu()
 end
 
 function menu_load()
-
+  playmusic(1)
   menu_buttons = {}
 
 
@@ -158,6 +158,7 @@ end
 
 
 function gotoeditor()
+  playmusic(levelmusic)
   gamestate = "editor"
   menu_state = "editor"
 
@@ -165,6 +166,7 @@ function gotoeditor()
 end
 
 function gotomenu()
+  playmusic(1)
   gamestate = "menu"
   menu_state = "main"
   heldtile = ""
@@ -176,6 +178,7 @@ function dolevelsave()
 end
 function dolevelload()
   loadleveldata(levelname)
+  playmusic(levelmusic)
 end
 
 function dolevelname()

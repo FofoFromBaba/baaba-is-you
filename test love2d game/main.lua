@@ -2,6 +2,28 @@ love.filesystem.load("border.lua")()
 love.filesystem.load("menu.lua")()
 love.filesystem.load("levels.lua")()
 
+currtype = nil
+currpath = nil
+currmusic = nil
+musicid = 1
+all_music = {"baaba", "default", "songidk", "the_song_ever", "silence"}
+function playmusic(path,looping_)
+  if (currpath ~= path) then
+	if currmusic ~= nil then
+		currmusic:stop()
+	end
+  	if (path ~= nil) then
+		local looping = looping_ or true
+  		if currpath ~= path then
+			currpath = path
+  		end
+		currmusic = love.audio.newSource("music/" .. all_music[path] .. ".wav","static")
+		currmusic:setLooping(looping)
+		currmusic:play()
+  	end
+  end
+end
+
 AllLevels = {}
 rules = {}
 active = false
@@ -10,12 +32,10 @@ local enabledebug = false
  winning = false
  local redraw_objects = true
 function love.load()
-
-  --love.audio.play(love.audio.newSource("sound/baaba.wav","static"))
-
   gamestate = "menu"
   levelx = 24
   levely = 14
+  levelmusic = 2
   x_offset = 0
   y_offset = 0
   wewinning = false
@@ -33,7 +53,7 @@ function love.load()
   miscsprites = {}
   miscsprites["play"] = love.graphics.newImage("graphics/playbutton.png")
   miscsprites["flag"] = love.graphics.newImage("sprite/flag.png")
-  all_palettes = {"testpalette", "brighter", "AAAAA", "table", "spaceeee", "oooh"}
+  all_palettes = {"testpalette", "brighter", "AAAAA", "table", "spaceeee", "oooh", "testerpalette", "tset"}
   palette_id = 1
   --leveldata = "testaaa={"
   heldtile = ""
@@ -61,7 +81,7 @@ images=
 {"blossom", "text_blossom", "calendar", "text_calendar", "planet", "text_planet", "card", "text_card", "jar", "text_jar", "satelite", "text_satelite", "text_collect", "text_select", "pixel", "text_pixel","text_auto","text_arc","arc","text_dot","dot","text_guy","guy"},
 {"text_cursor","cursor","text_gburble","gburble","text_old", "text_no","lever","text_lever","line","text_line","text_still","text_fall","wug","text_wug", "text_near", "text_above", "text_below", "fiiiiire", "text_fiiiiire","fish","text_fish","bell","text_bell"},
 {"orb","text_orb","fan","text_fan","gem","text_gem","bucket","text_bucket","turtle","text_turtle","lim","text_lim","bananas","text_bananas","text_eat", "text_a", "text_b", "text_c", "text_d","text_e","text_f","text_g","text_h"},
-{"text_i","text_j","text_k","text_l","text_m","text_n","text_o","text_p","text_r","text_s","text_t","text_u","text_v","text_w","text_x","text_y","text_z","tyyty","text_tyyty","squiggle","text_squiggle","spikes","text_spikes"},{"text_nextto","iss","text_iss","text_elinfc","text_draw","i2","text_i2","text_am"} }
+{"text_i","text_j","text_k","text_l","text_m","text_n","text_o","text_p","text_r","text_s","text_t","text_u","text_v","text_w","text_x","text_y","text_z"},{},{"tyyty","text_tyyty","squiggle","text_squiggle","spikes","text_spikes","text_nextto","iss","text_iss","text_elinfc","text_draw","i2","text_i2","text_am","finite","text_finite","text_fin","text_direction","text_knir","addaad","text_addaad"}, {"text_fallup","text_fallright","text_fallleft","text_falldown","text_falldirection"} }
 
 require "ui"
 require "tool"
@@ -235,6 +255,12 @@ if(editlevelname == false)then
 
       palette_id = (palette_id) % (#all_palettes) + 1
       loadPalette(all_palettes[palette_id])
+
+      initui()
+    end
+    if key == "m" then
+      levelmusic = (levelmusic) % (#all_music) + 1
+      playmusic(levelmusic)
 
       initui()
     end

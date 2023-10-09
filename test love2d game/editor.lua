@@ -169,6 +169,7 @@ end
 
 function loadlevel()
   menu_state = "editor_test"
+  playmusic(levelmusic)
   ineditor = false
   for i, j in ipairs(editor_curr_objects) do
 
