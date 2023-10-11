@@ -541,6 +541,12 @@ function handledels(dels, dtype_)
         makeobject(del.tilex,del.tiley,z,del.dir)
       end
     end
+    if(matches(rule[1], del)) and (rule[2] == "scrawl")then
+      local matches = unitreference(del, "text_" .. rule[3])
+      for i, z in ipairs(matches) do
+        makeobject(del.tilex,del.tiley,z,del.dir)
+      end
+    end
    end
   removeunit(del)
  end

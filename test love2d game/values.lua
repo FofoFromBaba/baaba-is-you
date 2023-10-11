@@ -1771,6 +1771,12 @@ objectValues = {
     color = {7,2},
     type = 0
   },
+  {
+    name = "text_scrawl",
+    sprite = "text_scrawl",
+    color = {1,2},
+    type = 1
+  },
 }
 
 local bonusletters = {"c","d","e","f","g","h","j","k","l","m","n","p","r","t","v","w","x","z","fin"}
