@@ -7,22 +7,6 @@ currpath = nil
 currmusic = nil
 musicid = 1
 all_music = {"baaba", "default", "songidk", "the_song_ever", "silence"}
-function playmusic(path,looping_)
-  if (currpath ~= path) then
-	if currmusic ~= nil then
-		currmusic:stop()
-	end
-  	if (path ~= nil) then
-		local looping = looping_ or true
-  		if currpath ~= path then
-			currpath = path
-  		end
-		currmusic = love.audio.newSource("music/" .. all_music[path] .. ".wav","static")
-		currmusic:setLooping(looping)
-		currmusic:play()
-  	end
-  end
-end
 
 AllLevels = {}
 rules = {}

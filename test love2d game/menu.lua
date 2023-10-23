@@ -53,7 +53,7 @@ function menu()
 end
 
 function menu_load()
-  playmusic(1)
+  playmusic("baaba")
   menu_buttons = {}
 
 

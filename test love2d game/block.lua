@@ -309,15 +309,14 @@ end
      if fail or to_y > levely - 1 then
        to_y = to_y - 1
        update(faller.id, to_x, to_y)
-       --[[faller.x = to_x * tilesize
+       faller.x = to_x * tilesize
        faller.y = to_y * tilesize
        faller.tilex = to_x
-       faller.tiley = to_y]]
+       faller.tiley = to_y
        done = true
      end
      limit = limit + 1
    end
-
  end]]
 
  for i,direction in pairs(dirblocks) do
