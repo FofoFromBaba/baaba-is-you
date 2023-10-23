@@ -173,9 +173,7 @@ end
 
 
 function loadlevel()
-
   menu_state = "editor_test"
-  playmusic(levelmusic)
   ineditor = false
   filecount = 0
   fileimages = {}
