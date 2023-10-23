@@ -1708,7 +1708,7 @@ objectValues = {
     name = "text_iss",
     sprite = "text_iss",
     color = {5,3},
-    type = 42,
+    type = -10,
     args = {0, 2}
   },
   {
@@ -1776,6 +1776,18 @@ objectValues = {
     sprite = "text_scrawl",
     color = {1,2},
     type = 1
+  },
+  {
+    name = "text_every",
+    sprite = "text_every",
+    color = {4,4},
+    type = 0
+  },
+  {
+    name = "text_...",
+    sprite = "text_...",
+    color = {1,2},
+    type = 11
   },
 }
 

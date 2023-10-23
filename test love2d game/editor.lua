@@ -235,7 +235,7 @@ function handletilething()
       onbuton = false
     end
     if(onbutton==false) then
-      if(love.keyboard.isDown("m")) then
+      if(love.keyboard.isDown("n")) then
       metaval = 1
       end
     --getobject()

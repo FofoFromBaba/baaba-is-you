@@ -6,10 +6,10 @@ function newturn()
   end
 end
 function realname(name)
-if(string.sub(name,1,5) == "text_")then
-return string.sub(name,6,string.len(name))
-end
-return name
+	if(string.sub(name,1,5) == "text_")then
+		return string.sub(name,6,string.len(name))
+	end
+	return name
 end
 function istext_or_word(name,noword_)
   -- What
@@ -68,7 +68,7 @@ function matches(word, unit, justname_)
     return true
   end
 
-  if word == "group"  and unitingroup("group", id) then
+  if word == "group" and unitingroup("group", id) then
     return true
   end
 
@@ -81,6 +81,10 @@ function matches(word, unit, justname_)
   end
 
   if word == "all" and not istext_or_word(name, 1) then
+    return true
+  end
+
+  if word == "every" then
     return true
   end
 
@@ -148,6 +152,14 @@ function unitreference(unit, ref)
       if not istext_or_word(j.name, true) then
         table.insert(alls, j.name)
       end
+    end
+    return alls
+  end
+
+  if ref == "every" then
+    local alls = {}
+    for i, j in ipairs(Objects) do
+        table.insert(alls, j.name)
     end
     return alls
   end

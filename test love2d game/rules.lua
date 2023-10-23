@@ -282,7 +282,7 @@ function Parser:makeFirstWords()
           table.insert(self.words, {ob.id, "down"})
         end
 
-        if type == 0 or type == 42 then
+        if type == 0 or type == -10 then
 
           local lft = gettiles("left",ob.tilex,ob.tiley,1)
           local ups = gettiles("up",ob.tilex,ob.tiley,1)
@@ -303,7 +303,7 @@ function Parser:makeFirstWords()
             end
           end
           for i, j in ipairs(lft2) do
-            if hasand and (j.type == 0 or j.type == 42) then
+            if hasand and (j.type == 0 or j.type == -10) then
               blft = true
             end
           end
@@ -315,7 +315,7 @@ function Parser:makeFirstWords()
             end
           end
           for i, j in ipairs(ups2) do
-            if hasand and (j.type == 0 or j.type == 42) then
+            if hasand and (j.type == 0 or j.type == -10) then
               bup = true
             end
           end
@@ -370,7 +370,7 @@ function Parser:MakeRules()
 
 end
 function gettextequality(type)
-	if type == 42 then
+	if type == -10 then
 		return 0
 	end
 	return type
@@ -463,7 +463,7 @@ function Parser:ParseRules()
     elseif letterpass > 0 then
       letterpass = letterpass - 1
     elseif(stage == -1) then
-        if (type == 0 or type == 42)  then
+        if (type == 0 or type == -10)  then
           table.insert(ids, thing)
           table.insert(rule_targets, name)
           stage = 1
@@ -471,21 +471,27 @@ function Parser:ParseRules()
           table.insert(rule_conds, {name, {}})
           table.insert(ids, thing)
           stage = 0
+        elseif type == 11 then
+          table.insert(ids, thing)
+          stage = -1
         else
           stop = true
         end
       -- X
       elseif (stage == 0) then
-        if (type == 0 or type == 42) then
+        if (type == 0 or type == -10) then
           table.insert(ids, thing)
           table.insert(rule_targets, name)
           stage = 1
+        elseif type == 11 then
+          table.insert(ids, thing)
+          stage = 0
         else
           stop = true
         end
       -- IS X / X AND Y IS Z / x ON Y IS Z
       elseif (stage == 1) then
-        if (type == 1 or type == 42) then
+        if (type == 1 or type == -10) then
 
           if next == nil then
             stop = true
@@ -493,7 +499,7 @@ function Parser:ParseRules()
 
             local accepted_args = getspritevalues("text_" .. name).args or {0}
 	    if accepted_args[1] == 0 then
-		table.insert(accepted_args, 42)
+		table.insert(accepted_args, -10)
 	    end
             local success = false
             local asletter = false
@@ -549,13 +555,9 @@ function Parser:ParseRules()
                 fixTHIS = false
               end
               stage = 2
-
             else
-
               stop = true
-
             end
-
           end
 
 
@@ -600,6 +602,9 @@ function Parser:ParseRules()
 
             pass = true
 
+          elseif type == 11 then
+            table.insert(ids, thing)
+            stage = 1
           else
 
             stop = true
@@ -616,7 +621,7 @@ function Parser:ParseRules()
           if type == 4 then
 
 
-              if (next.type == 1 or next.type == 42) then
+              if (next.type == 1 or next.type == -10) then
 
                 fixTHIS = thing
                 stage = 1
@@ -669,6 +674,9 @@ function Parser:ParseRules()
 
 
 
+          elseif type == 11 then
+            table.insert(ids, thing)
+            stage = 2
           else
             stop = true
           end
