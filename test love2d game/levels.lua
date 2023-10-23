@@ -54,6 +54,10 @@ function loadleveldata(levelnamee)
        if string.sub(objdata,1,7) == "SIZE_Y:" then
          levely = tonumber(string.sub(objdata,8))
        end
+       if string.sub(objdata,1,6) == "MUSIC:" then
+         levelmusic = tonumber(string.sub(objdata,7))
+         playmusic(musiclist[levelmusic])
+       end
       else
      addobject(objnames, tonumber(objxs), tonumber(objys), objdirs)
     end
