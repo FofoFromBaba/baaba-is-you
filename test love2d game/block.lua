@@ -55,10 +55,12 @@ function startproperties()
     c.hide = false
     if(c.name == "text_clipboard")then
       local found  = false
+      if love.system.getClipboardText() ~= "oops!" then
       for i,val in ipairs(objectValues)do
         if(love.system.getClipboardText() == val.name) or ("text_" .. love.system.getClipboardText() == val.name)then
           found = true
         end
+      end
       end
       if found == false then
         c.color = {1,4}
@@ -166,6 +168,11 @@ function startproperties()
         c.color = {2,3}
         c.customcolor = true
       end
+    end
+
+    local isoops = objectswithproperty("oops!")
+    for i,c in ipairs(isoops) do
+      c.whoops = true
     end
 
 

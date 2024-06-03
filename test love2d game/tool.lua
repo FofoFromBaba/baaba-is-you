@@ -89,7 +89,7 @@ function matches(word, unit, justname_)
     return true
   end
 
-  if word == "every" then
+  if word == "unit" then
     return true
   end
 
@@ -165,7 +165,7 @@ function unitreference(unit, ref)
     return alls
   end
 
-  if ref == "every" then
+  if ref == "unit" then
     local alls = {}
     for i, j in ipairs(Objects) do
         table.insert(alls, j.name)

@@ -5,9 +5,7 @@ love.filesystem.load("levels.lua")()
 currtype = nil
 currpath = nil
 currmusic = nil
-musicid = 1
-all_music = {"baaba", "default", "songidk", "the_song_ever", "silence"}
-
+musicid = "0"
 AllLevels = {}
 rules = {}
 active = false
@@ -88,7 +86,7 @@ images=
 { "clipboard", "icon", "this","monster","text_monster","monitor","text_monitor","question","text_question","text_uncopy","text_textof","text_but","mountain","text_mountain","correct","text_correct","horse","text_horse","battery","text_battery","staple","text_staple", "text_upsilon"},
 {"incorrect", "text_incorrect","text_heavy","text_oneway","text_link","text_shift","text_reset","text_set","text_big","text_random", "axe","text_axe","pick","text_pick","sword","text_sword","log","text_log","text_feeling","text_without","text_starts","text_contains","text_ends"},
 {"text_path","text_left","text_down","text_right","text_0","text_1","text_2","text_3","text_4","text_5","text_6","text_7","text_8","text_9","hand","text_hand","sqrt9","text_sqrt9","text_tele", "text_file","mathdotsinxword","text_mathdotsinxword","text_dollars"},
-{"3dollars","text_3dollars","text_pink","text_ba","ring","text_ring","text_ch","chair","text_chair","lemon","text_lemon","prize","text_prize","car","text_car","text_xnopyt","text_hide","jsdhgous","text_jsdhgous","seastar","text_seastar","lock","text_lock"},{},{"tyyty","text_tyyty","squiggle","text_squiggle","spikes","text_spikes","text_nextto","iss","text_iss","text_elinfc","text_draw","i2","text_i2","text_am","finite","text_finite","text_fin","text_direction","text_knir","addaad","text_addaad"}, {"text_fallup","text_fallright","text_fallleft","text_falldown","text_falldirection","text_scrawl","text_every","text_..."} }
+{"3dollars","text_3dollars","text_pink","text_ba","ring","text_ring","text_ch","chair","text_chair","lemon","text_lemon","prize","text_prize","car","text_car","text_xnopyt","text_hide","jsdhgous","text_jsdhgous","seastar","text_seastar","lock","text_lock"},{},{"tyyty","text_tyyty","squiggle","text_squiggle","spikes","text_spikes","iss","text_iss","text_nextto","i2","text_i2","text_am","finite","text_finite","text_fin","text_draw","text_direction","text_knir","addaad","text_addaad","text_scrawl","text_unit","text_oops!"}, {"text_fallup","text_fallright","text_fallleft","text_falldown","text_falldirection"} }
 
 require "ui"
 require "tool"
@@ -128,6 +126,7 @@ function passturn()
      unit.tiley = math.floor(unit.y/tilesize)]]
      unit.small = 1
      unit.sleep = false
+     unit.whoops = false
      unit.hide = nil
      unit.old = false
      unit.blocked = false
@@ -375,6 +374,8 @@ function updatesprite(c)
      csprite =  c.name .. "-" .. c.dir
      if (gsv == 6) and c.sleep then
        csprite = csprite .. "-sleep"
+     elseif (gsv == 6) and c.whoops and love.filesystem.getInfo("sprite/" .. csprite .. "-whoops.png",{}) ~= nil then
+       csprite = csprite .. "-whoops"
      end
     elseif (c.tiling ~= nil) then
      csprite = c.name .. " T" .. c.tiling

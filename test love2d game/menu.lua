@@ -238,7 +238,7 @@ function dolevelsave()
 end
 function dolevelload()
   loadleveldata(levelname)
-  playmusic(levelmusic)
+  playmusic(musiclist[levelmusic])
 end
 
 function dolevelname()

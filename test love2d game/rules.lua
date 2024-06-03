@@ -1,3 +1,4 @@
+
 love.filesystem.load("conditions.lua")()
 
 function gettiles(directiontype,xpos,ypos,tileamount)
@@ -71,6 +72,7 @@ function getplayers()
  local objs1 = {}
  for i,ob in ipairs(rules) do
    local property = ob[3]
+    if ob[2] == "iss" or ob[2] == "am" then ob[2] = "is" end
     if property == "you" or property == "you2" and (ob[2] == "is")then
       for j,job in ipairs(Objects) do
 
@@ -547,9 +549,6 @@ function Parser:ParseRules()
           textof = true
           stage = 0
           table.insert(ids, thing)
-        elseif type == 11 then
-          table.insert(ids, thing)
-          stage = -1
         else
           stop = true
         end
@@ -564,9 +563,6 @@ function Parser:ParseRules()
             textof = true
             stage = 0
             table.insert(ids, thing)
-          elseif type == 11 then
-            table.insert(ids, thing)
-            stage = 0
           else
             stop = true
           end
@@ -716,9 +712,6 @@ function Parser:ParseRules()
 
             pass = true
 
-          elseif type == 11 then
-            table.insert(ids, thing)
-            stage = 1
           else
 
             stop = true
@@ -814,9 +807,6 @@ function Parser:ParseRules()
                 table.insert(if_rule[3], bbb)
               end
               stage = 0
-          elseif type == 11 then
-            table.insert(ids, thing)
-            stage = 2
             else
               stop = true
             end

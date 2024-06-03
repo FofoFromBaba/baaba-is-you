@@ -1750,15 +1750,45 @@ objectValues = {
     type = 0
   },
   {
-    name = "text_elinfc",
-    sprite = "text_elinfc",
-    color = {4,4},
+    name = "text_direction",
+    sprite = "text_direction",
+    color = {6,5},
     type = 2
+  },
+  {
+    name = "addaad",
+    sprite = "addaad",
+    color = {7,2},
+    rotate = 4
+  },
+  {
+    name = "text_addaad",
+    sprite = "text_addaad",
+    color = {7,2},
+    type = 0
+  },
+  {
+    name = "text_scrawl",
+    sprite = "text_scrawl",
+    color = {1,2},
+    type = 1
+  },
+  {
+    name = "text_unit",
+    sprite = "text_unit",
+    color = {4,4},
+    type = 0
   },
   {
     name = "text_direction",
     sprite = "text_direction",
     color = {6,5},
+    type = 2
+  },
+  {
+    name = "text_oops!",
+    sprite = "text_oops!",
+    color = {7,2},
     type = 2
   },
 
@@ -1948,36 +1978,6 @@ objectValues = {
     sprite = "text_reset",
     color = {6,5},
     type = 2
-  },
-  {
-    name = "addaad",
-    sprite = "addaad",
-    color = {7,2},
-    rotate = 4
-  },
-  {
-    name = "text_addaad",
-    sprite = "text_addaad",
-    color = {7,2},
-    type = 0
-  },
-  {
-    name = "text_scrawl",
-    sprite = "text_scrawl",
-    color = {1,2},
-    type = 1
-  },
-  {
-    name = "text_every",
-    sprite = "text_every",
-    color = {4,4},
-    type = 0
-  },
-  {
-    name = "text_...",
-    sprite = "text_...",
-    color = {1,2},
-    type = 11
   },
   {
     name = "text_set",
