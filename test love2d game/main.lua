@@ -92,10 +92,7 @@ images=
 {"incorrect", "text_incorrect","text_heavy","text_oneway","text_link","text_shift","text_reset","text_set","text_big","text_random", "axe","text_axe","pick","text_pick","sword","text_sword","log","text_log","text_feeling","text_without","text_starts","text_contains","text_ends"},
 {"text_path","text_left","text_down","text_right","text_0","text_1","text_2","text_3","text_4","text_5","text_6","text_7","text_8","text_9","hand","text_hand","sqrt9","text_sqrt9","text_tele", "text_file","mathdotsinxword","text_mathdotsinxword","text_dollars"},
 {"3dollars","text_3dollars","text_pink","text_ba","ring","text_ring","text_ch","chair","text_chair","lemon","text_lemon","prize","text_prize","car","text_car","text_xnopyt","text_hide","jsdhgous","text_jsdhgous","seastar","text_seastar","lock","text_lock"},
-{"cucucu","text_cucucu","wheel","text_wheel","file","choose","text_choose","abba","text_abba","text_none","text_yes","text_the", "stack", "text_stack"},
-{},
-{"tyyty","text_tyyty","squiggle","text_squiggle","spikes","text_spikes","iss","text_iss","text_nextto","i2","text_i2","text_am","finite","text_finite","text_fin","text_draw","text_direction","text_knir","addaad","text_addaad","text_scrawl","text_unit","text_oops!"},
-{"text_fallup","text_fallright","text_fallleft","text_falldown","text_falldirection"} }
+{"cucucu","text_cucucu","wheel","text_wheel","file","choose","text_choose","abba","text_abba","text_none","text_yes","text_the", "stack", "text_stack"} }
 
 require "ui"
 require "tool"

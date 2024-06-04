@@ -378,8 +378,8 @@ editor_tabs = {}
 function make_tabs()
   editor_tabs = {}
 
-  tab_names = {"basic", "characters","items","obstacles","rules","decor","abstract","letters","advanced","new","all"}
-  tab_colors = {{2,3},{1,2},{3,1},{2,3},{1,2},{6,3},{4,4},{1,2},{1,3},{3,1},{1,2}}
+  tab_names = {"basic", "characters","items","obstacles","rules","decor","abstract","letters","advanced","new","mods","all"}
+  tab_colors = {{2,3},{1,2},{3,1},{2,3},{1,2},{6,3},{4,4},{1,2},{1,3},{3,1},{7,1},{1,2}}
   tab_buttons = {}
   for a, b in ipairs(tab_names) do
     miscsprites["tab_" .. b] = love.graphics.newImage("graphics/tabs/tab_" .. b .. ".png")
@@ -485,6 +485,12 @@ function make_tabs()
     {"text_you", "text_win", "text_stop", "text_push", "text_sink", "text_hot", "text_melt", "text_defeat"},
     {"text_pull", "text_shift", "text_float", "text_move", "text_red", "text_weak"},
     {"text_is", "text_have", "text_n'", "text_on", "text_text"}
+  }
+
+  editor_tabs.mods = {
+    {"tyyty","text_tyyty","squiggle","text_squiggle","spikes","text_spikes","iss","text_iss","i2","text_i2","finite","text_finite","addaad","text_addaad"},
+    {"text_nextto","text_am","text_fin","text_draw","text_direction","text_knir","text_scrawl","text_unit","text_oops!"},
+    {"text_fallup","text_fallright","text_fallleft","text_falldown","text_falldirection"}
   }
 
   editor_tabs.all = images
