@@ -175,6 +175,7 @@ function unitreference(unit, ref)
         table.insert(alls, j.name)
     end
     return alls
+  end
 
   if ref == "choose" then
     if chooserule ~= "" and chooserule ~= nil then
