@@ -489,7 +489,7 @@ function make_tabs()
 
   editor_tabs.mods = {
     {"tyyty","text_tyyty","squiggle","text_squiggle","spikes","text_spikes","iss","text_iss","i2","text_i2","finite","text_finite","addaad","text_addaad"},
-    {"text_nextto","text_am","text_fin","text_draw","text_direction","text_knir","text_scrawl","text_unit","text_oops!"},
+    {"text_nextto","text_am","text_fin","text_draw","text_direction","text_knir","text_scrawl","text_unit","text_oops!", "text_invite"},
     {"text_fallup","text_fallright","text_fallleft","text_falldown","text_falldirection"}
   }
 

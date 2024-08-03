@@ -1794,6 +1794,13 @@ objectValues = {
     color = {7,2},
     type = 2
   },
+  {
+    name = "text_invite",
+    sprite = "text_invite",
+    color = {1,2},
+    type = 1,
+    args = {0, 2}
+  },
 
 -- modded things end here
   {
